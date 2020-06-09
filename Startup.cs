@@ -28,7 +28,7 @@ namespace MVCAngular
             services.AddTransient<IWeatherRepository, WeatherRepository>();
             services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<TrackerDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("TrackerDb")));
-            //services.AddDbContext<TrackerDbContext>(option => option.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=TrackerDb;"));
+            //services.AddDbContext<TrackerDbContext>(option => option.UseSqlServer(@"Data Source=sahilvora.database.windows.net;Initial Catalog=TrackerDb;Persist Security Info=True;User ID=sahilvora;Password=S@hilvora1234"));
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -37,7 +37,7 @@ namespace MVCAngular
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,TrackerDbContext context)
         {
             if (env.IsDevelopment())
             {
@@ -65,6 +65,8 @@ namespace MVCAngular
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
             });
+
+            context.Database.Migrate();
 
             app.UseSpa(spa =>
             {
