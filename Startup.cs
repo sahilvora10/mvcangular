@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MVCAngular.DBContexts;
-using MVCAngular.Repository;
+using MVCAngular.Service;
 using AutoMapper;
 
 namespace MVCAngular
@@ -27,7 +27,7 @@ namespace MVCAngular
             services.AddControllersWithViews();
             services.AddTransient<IWeatherRepository, WeatherRepository>();
             services.AddAutoMapper(typeof(Startup));
-            services.AddDbContext<TrackerDbContext>(option => option.UseSqlServer(@"Data Source=testangularserver.database.windows.net;Initial Catalog=TestAngularServer;Persist Security Info=True;User ID=rohgopal;Password=upsinterns123-"));
+            services.AddDbContext<TrackerDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("TrackerDb")));
             //services.AddDbContext<TrackerDbContext>(option => option.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=TrackerDb;"));
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

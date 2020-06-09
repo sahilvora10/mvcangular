@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MVCAngular.Repository
+namespace MVCAngular.Service
 {
     public interface IWeatherRepository
     {

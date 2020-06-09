@@ -6,7 +6,7 @@ using System.Transactions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MVCAngular.Models;
-using MVCAngular.Repository;
+using MVCAngular.Service;
 
 namespace MVCAngular.Controllers
 {

@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MVCAngular.Repository
+namespace MVCAngular.Service
 {
     public class WeatherRepository : IWeatherRepository
     {
